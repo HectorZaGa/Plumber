@@ -261,6 +261,15 @@ LandingPageUtil.GetDifficultyName = GetEJDifficultyString;
 
 
 do
+	local DF_EncounterTabInfo = {
+		JournalInstanceIDs = {
+			1207,   --Amirdrassil, the Dream's Hope
+			1208,   --Aberrus, the Shadowed Crucible
+			1200,   --Vault of the Incarnates
+		},
+	};
+	LandingPageUtil.AddExpansionData(10, "encounter", DF_EncounterTabInfo);
+
 	local TWW_EncounterTabInfo = {
 		JournalInstanceIDs = {
 			1302,   --Manaforge Omega

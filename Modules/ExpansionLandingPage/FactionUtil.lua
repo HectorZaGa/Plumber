@@ -58,9 +58,9 @@ local OverrideFactionInfo = {
 		barColor = {215/255, 160/255, 65/255},
 	},
 
-	[2744] = {  --Valeera Sanguinar
-		barColor = {242/255, 141/255, 152/255},
-	},
+		[2744] = {  --Valeera Sanguinar
+			barColor = {242/255, 141/255, 152/255},
+		},
 
 	[2770] = {  --Slayer's Duellum
 		barColor = {56/255, 184/255, 255/255},
@@ -149,6 +149,59 @@ local OverrideFactionInfo = {
 		barColor = {197/255, 142/255, 255/255},
 		--rewardQuestID = 85109,
 	},
+
+	[2722] = {  --Delves S3
+		barColor = {215/255, 160/255, 65/255},
+	},
+
+		[2640] = {  --Brann Bronzebeard
+			barColor = {1/255, 185/255, 27/255},
+		},
+
+	---- DF ----
+	[2507] = {  --Dragonscale Expedition
+		barColor = {227/255, 86/255, 93/255},
+	},
+
+	[2511] = {  --Iskaara Tuskarr
+		barColor = {87/255, 173/255, 246/255},
+	},
+
+	[2564] = {  --Loamm Niffen
+		barColor = {246/255, 170/255, 126/255},
+	},
+
+	[2503] = {  --Maruuk Centaur
+		barColor = {240/255, 189/255, 62/255},
+	},
+
+	[2574] = {  --Dream Wardens
+		barColor = {99/255, 255/255, 156/255},
+	},
+
+	[2510] = {  --Valdrakken Accord
+		barColor = {196/255, 213/255, 234/255},
+	},
+
+		[2544] = {  --Artisan's Consortium
+			barColor = {255/255, 62/255, 96/255},
+		},
+
+		[2553] = {  --Soridormi
+			barColor = {255/255, 206/255, 66/255},
+		},
+
+		[2518] = {  --Sabellian
+			barColor = {104/255, 104/255, 104/255},
+		},
+
+		[2517] = {  --Wrathion
+			barColor = {104/255, 104/255, 104/255},
+		},
+
+		[2550] = {  --Cobalt Assembly
+			barColor = {34/255, 130/255, 255/255},
+		},
 };
 
 
@@ -195,6 +248,11 @@ do  --Layout TWW
 			{factionID = 2736},     --Manaforge Vandals
 			{factionID = 2658},     --The K'aresh Trust
 			{factionID = 2688},     --Flame's Radiance
+			{factionID = 2722,      --Delves S3
+				subFactions = {
+					{factionID = 2640, creatureDisplayID = 115505, playerCompanionID = 1},     --Brann Bronzebeard.
+				},
+			},
 		},
 
 		[2] = {
@@ -228,6 +286,30 @@ do  --Layout TWW
 	LandingPageUtil.AddExpansionData(11, "factionLayout", MajorFactionLayout);
 end
 
+
+do  --Layout DF
+	local MajorFactionLayout = {
+		[1] = {
+			{factionID = 2564},     --Loamm Niffen
+			{factionID = 2574},     --Dream Wardens
+		},
+		[2] = {
+			{factionID = 2507},     --Dragonscale Expedition
+			{factionID = 2503},     --Maruuk Centaur
+			{factionID = 2511},     --Iskaara Tuskarr
+			{factionID = 2510,      --Valdrakken Accord
+				subFactions = {
+					{factionID = 2544, creatureDisplayID = 108377},     --Artisan's Consortium
+					{factionID = 2553, creatureDisplayID = 108314},     --Soridormi
+					{factionID = 2518, creatureDisplayID = 104559},     --Sabellian
+					{factionID = 2517, creatureDisplayID = 107146},     --Wrathion
+					{factionID = 2550, creatureDisplayID = 108695},     --Cobalt Assembly
+				},
+			},
+		},
+	};
+	LandingPageUtil.AddExpansionData(10, "factionLayout", MajorFactionLayout);
+end
 
 local RewardQuestXFaction = {};
 for factionID, v in pairs(OverrideFactionInfo) do
@@ -295,7 +377,7 @@ end
 
 function FactionUtil:GetBestExpansionIDWithRewardPending()
 	local IsOnQuest = C_QuestLog.IsOnQuest;
-	local expansionIDs = {12, 11}; -- newer expansion first
+	local expansionIDs = {12, 11, 10}; -- newer expansion first
 
 	for _, expansionID in ipairs(expansionIDs) do
 		local factionLayout = LandingPageUtil.GetExpansionData(expansionID, "factionLayout");
