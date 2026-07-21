@@ -123,3 +123,18 @@ do  --TWW
 
 	LandingPageUtil.AddExpansionData(11, "resource", ResourceList);
 end
+
+
+do  --DF
+	local DF_ResourceList = {
+		{currencyID = 2003},    --Dragon Isles Supplies
+		{currencyID = 2245, shownIfOwned = true},    --Flightstones
+		{currencyID = 2118, shownIfOwned = true},    --Elemental Overflow
+		{currencyID = 2122, shownIfOwned = true},    --Storm Sigil
+		{currencyID = 1602, shownIfOwned = true},    --Conquest
+		{currencyID = 1792, shownIfOwned = true},    --Honor
+		{currencyID = 2123, shownIfOwned = true},    --Bloody Tokens
+		{currencyID = 2797, shownIfOwned = true},    --Trophy of Strife
+	};
+	LandingPageUtil.AddExpansionData(10, "resource", DF_ResourceList);
+end

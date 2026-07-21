@@ -553,24 +553,35 @@ do  --Atlas
 	local FACTION_ICONS = "Interface/AddOns/Plumber/Art/ExpansionLandingPage/MajorFactionIcons.png";
 	local FACTION_ICONS_COORDS = {
 		--[factionID] = {icon l, r, t, b, highlight l, r, t, b}
-		[2590] = {0  , 128, 0, 128},      --Council of Dornogal
-		[2594] = {128, 256, 0, 128},      --The Assembly of the Deeps
-		[2570] = {256, 384, 0, 128},      --Hallowfall Arathi
-		[2600] = {384, 512, 0, 128},      --Severed Threads
-		[2653] = {512, 640, 0, 128},      --Cartels of Undermine
-		[2685] = {640, 768, 0, 128},      --Gallagio Loyalty Rewards Club
-		[2688] = {768, 896, 0, 128},      --Flame's Radiance
-		[2658] = {896, 1024, 0, 128},     --The K'aresh Trust
-		[2736] = {0  , 128, 256, 384},    --Manaforge Vandals
+		---- DF ----
+		[2507] = {0  , 128, 0, 128},      --Dragonscale Expedition
+		[2503] = {128, 256, 0, 128},      --Maruuk Centaur
+		[2511] = {256, 384, 0, 128},      --Iskaara Tuskarr
+		[2510] = {384, 512, 0, 128},      --Valdrakken Accord
+		[2564] = {512, 640, 0, 128},      --Loamm Niffen
+		[2574] = {640, 768, 0, 128},      --Dream Wardens
+		[2593] = {768, 896, 0, 128},      --Plunderstorm (Keg Leg's Crew)
 
-		[2710] = {128, 256, 256, 384},    --Silvermoon Court
-		[2696] = {256, 384, 256, 384},    --Amani Tribe
-		[2704] = {384, 512, 256, 384},    --Hara'ti
-		[2699] = {512, 640, 256, 384},    --The Singularity
+		---- TWW ----
+		[2590] = {0  , 128, 256, 384},    --Council of Dornogal
+		[2594] = {128, 256, 256, 384},    --The Assembly of the Deeps
+		[2570] = {256, 384, 256, 384},    --Hallowfall Arathi
+		[2600] = {384, 512, 256, 384},    --Severed Threads
+		[2653] = {512, 640, 256, 384},    --Cartels of Undermine
+		[2685] = {640, 768, 256, 384},    --Gallagio Loyalty Rewards Club
+		[2688] = {768, 896, 256, 384},    --Flame's Radiance
+		[2658] = {896, 1024, 256, 384},   --The K'aresh Trust
+		[2722] = {768, 896, 512, 640},    --Delves
 
-		[2764] = {640, 768, 256, 384},    --Prey
-		[2742] = {768, 896, 256, 384},    --Delves
-		[2792] = {896, 1024, 256, 384},   --Ritual Sites
+		---- MIDNIGHT ----
+		[2736] = {0  , 128, 512, 640},    --Manaforge Vandals
+		[2710] = {128, 256, 512, 640},    --Silvermoon Court
+		[2696] = {256, 384, 512, 640},    --Amani Tribe
+		[2704] = {384, 512, 512, 640},    --Hara'ti
+		[2699] = {512, 640, 512, 640},    --The Singularity
+		[2764] = {640, 768, 512, 640},    --Prey
+		[2742] = {768, 896, 512, 640},    --Delves
+		[2792] = {896, 1024, 512, 640},   --Ritual Sites
 	};
 
 	local function SetTextureDimension(textureObject, file, width, height, l, r, t, b, useTrilinearFilter)
@@ -1717,13 +1728,14 @@ do  --Expansion Select
 	local ExpansionList;
 	local CurrentExpansionID;
 	local ExpansionData = {
+		[10] = {name = EXPANSION_NAME9},    --DF
 		[11] = {name = EXPANSION_NAME10},   --TWW
 		[12] = {name = EXPANSION_NAME11, isWIP = false},   --MID
 		[5] = {name = EXPANSION_NAME4},     --MOP
 	};
 
 	if addon.IS_MIDNIGHT then
-		ExpansionList = {11, 12};
+		ExpansionList = {10, 11, 12};
 	else
 		ExpansionList = {5};
 	end
